@@ -1,6 +1,12 @@
+$result-header-text: #819093;
+
 .mission-list {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  .results-header {
+    color: $result-header-text;
+    font-size: 0.9rem;
+  }
 }
