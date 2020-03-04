@@ -18,7 +18,8 @@ class App extends Component {
       maxYearField: "",
       filteredMissions: [],
       appliedSearch: false,
-      searchResults: 0
+      searchResults: 0,
+      invalidYearRange: false
     };
   }
 
@@ -51,7 +52,8 @@ class App extends Component {
       keywordField,
       launchPadField,
       minYearField,
-      maxYearField
+      maxYearField,
+      invalidYearRange
     } = this.state;
 
     let filteredMissions = missions.filter(mission => {
@@ -97,6 +99,16 @@ class App extends Component {
         return launch_year <= parseInt(maxYearField);
       });
     }
+
+    // invalid year range check
+    console.log(parseInt(minYearField));
+    console.log(parseInt(maxYearField));
+    if (parseInt(maxYearField) < parseInt(minYearField)) {
+      this.setState({ invalidYearRange: true });
+    } else {
+      this.setState({ invalidYearRange: false });
+    }
+
     this.setState({
       filteredMissions: filteredMissions,
       searchResults: filteredMissions.length
@@ -139,7 +151,11 @@ class App extends Component {
             }
             searchResults={this.state.searchResults}
             launchPads={this.state.launchPads}
-          />
+          >
+            {this.state.invalidYearRange
+              ? "Invalid year range, please check again"
+              : ""}
+          </MissionList>
         </div>
         <Footer />
       </div>

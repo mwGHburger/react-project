@@ -13,6 +13,9 @@ export const MissionList = props => {
             ? `Showing ${props.searchResults} Mission`
             : `Showing ${props.searchResults} Missions`}
         </h2>
+        <p style={{ color: "#ec607a", fontSize: "1rem", fontWeight: "500" }}>
+          {props.children}
+        </p>
       </div>
       {props.missions.map(mission => {
         return (
