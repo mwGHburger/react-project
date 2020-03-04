@@ -25,7 +25,7 @@ export const LinkList = props => {
             </a>
           );
         }
-        return;
+        return "";
       })}
     </div>
   );

@@ -89,9 +89,15 @@ export const MissionItem = props => {
     return " Failed Mission";
   };
 
+  const handleImageError = e => {};
+
   return (
     <div className="mission-item">
-      <img src={props.mission.links.mission_patch} alt="image not found" />
+      <img
+        src={props.mission.links.mission_patch}
+        alt=""
+        onError={handleImageError}
+      />
       <div className="mission-main-content">
         <h2>
           {`${props.mission.rocket.rocket_name} - ${handlePayloadID()} `}

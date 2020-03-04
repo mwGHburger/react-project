@@ -3,6 +3,7 @@ import "./App.scss";
 // Components
 import { Header } from "./components/header/header.component";
 import { SearchFilter } from "./components/search-filter/search-filter.component";
+import { ScreenLoader } from "./components/screen-loader/screen-loader.component";
 import { MissionList } from "./components/mission-list/mission-list.component";
 import { Footer } from "./components/footer/footer.component";
 
@@ -19,7 +20,8 @@ class App extends Component {
       filteredMissions: [],
       appliedSearch: false,
       searchResults: 0,
-      invalidYearRange: false
+      invalidYearRange: false,
+      loading: true
     };
   }
 
@@ -27,24 +29,27 @@ class App extends Component {
     // API call
     fetch("http://localhost:8001/launches")
       .then(res => res.json())
-      .then(data =>
+      .then(data => {
+        console.log("1");
         this.setState({
           missions: data,
           searchResults: data.length
-        })
-      );
+        });
+      });
 
     fetch("http://localhost:8001/launchpads")
       .then(res => res.json())
-      .then(data =>
+      .then(data => {
+        console.log("2");
         this.setState({
-          launchPads: data
-        })
-      );
+          launchPads: data,
+          loading: false
+        });
+      });
   }
 
   handleApplyBtn = e => {
-    this.setState({ appliedSearch: true });
+    this.setState({ appliedSearch: true, loading: true });
     // destructure
     const {
       missions,
@@ -52,8 +57,7 @@ class App extends Component {
       keywordField,
       launchPadField,
       minYearField,
-      maxYearField,
-      invalidYearRange
+      maxYearField
     } = this.state;
 
     let filteredMissions = missions.filter(mission => {
@@ -99,7 +103,6 @@ class App extends Component {
         return launch_year <= parseInt(maxYearField);
       });
     }
-
     // invalid year range check
     console.log(parseInt(minYearField));
     console.log(parseInt(maxYearField));
@@ -109,10 +112,13 @@ class App extends Component {
       this.setState({ invalidYearRange: false });
     }
 
-    this.setState({
-      filteredMissions: filteredMissions,
-      searchResults: filteredMissions.length
-    });
+    setTimeout(() => {
+      this.setState({
+        filteredMissions: filteredMissions,
+        searchResults: filteredMissions.length,
+        loading: false
+      });
+    }, 1000);
   };
 
   render() {
@@ -143,6 +149,8 @@ class App extends Component {
             }
             handleApplyBtn={this.handleApplyBtn}
           />
+          {this.state.loading ? <ScreenLoader /> : ""}
+
           <MissionList
             missions={
               this.state.appliedSearch === false

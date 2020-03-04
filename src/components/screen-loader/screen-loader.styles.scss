@@ -1,0 +1,40 @@
+.screen-loader {
+  background: white;
+  height: 100vh;
+  font-size: 1.5rem;
+  color: #819093;
+  max-width: 100vw;
+  min-height: 100vh;
+  padding: 15rem 0;
+  letter-spacing: 0.5rem;
+  h1 {
+    animation-name: aboutTitleAppear;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+  }
+}
+
+@keyframes aboutTitleAppear {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 100;
+  }
+  75% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .screen-loader {
+    padding: 5rem 2rem;
+    font-size: 0.5rem;
+    line-height: 2rem;
+  }
+}
