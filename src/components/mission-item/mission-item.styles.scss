@@ -33,17 +33,6 @@ $text-header: #190f19;
     p {
       color: $text-color;
     }
-    .mission-links {
-      margin-top: 1.5rem;
-      .mission-link {
-        color: $text-color;
-        text-decoration: none;
-        border: 1px $text-color solid;
-        border-radius: 2px;
-        padding: 0.5rem 1rem;
-        margin-right: 1rem;
-      }
-    }
   }
 
   .flight-number-container {

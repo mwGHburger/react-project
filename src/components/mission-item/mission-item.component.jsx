@@ -1,6 +1,8 @@
 import React from "react";
 //stylesheet
 import "./mission-item.styles.scss";
+// Component
+import { LinkList } from "../link-list/link-list.component";
 
 export const MissionItem = props => {
   const handleDate = () => {
@@ -111,26 +113,7 @@ export const MissionItem = props => {
           <span className="text-hl">{handleTime()}</span> from{" "}
           <span className="text-hl">{findLaunchPadName()}</span>
         </p>
-        <div className="mission-links">
-          {[
-            ["reddit_campaign", "Reddit Campaign"],
-            ["reddit_launch", "Reddit Launch"],
-            ["reddit_recovery", "Reddit Recovery"],
-            ["reddit_media", "Reddit Media"],
-            ["presskit", "Press Kit"],
-            ["article_link", "Article"],
-            ["video_link", "Watch Video"]
-          ].map(link => {
-            if (props.mission.links[link[0]]) {
-              return (
-                <a className="mission-link" href={props.mission.links[link[0]]}>
-                  {link[1]}
-                </a>
-              );
-            }
-            return;
-          })}
-        </div>
+        <LinkList mission={props.mission} />
       </div>
       <div className="flight-number-container">
         <h1>{`#${props.mission.flight_number}`}</h1>

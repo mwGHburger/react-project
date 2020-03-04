@@ -1,0 +1,14 @@
+$text-color: #94a1a4;
+$border-color: #e0e3e5;
+
+.mission-links {
+  margin-top: 1.5rem;
+  .mission-link {
+    color: $text-color;
+    text-decoration: none;
+    border: 1.5px $border-color solid;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    margin-right: 1rem;
+  }
+}
