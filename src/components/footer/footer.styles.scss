@@ -1,0 +1,27 @@
+$main-background: #eaedf1;
+$copyright-text-color: #afb8ba;
+$link-text-color: #7d8488;
+
+.footer {
+  background: $main-background;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 5rem;
+  margin: 0rem 4rem;
+  p {
+    margin: 0;
+    color: $copyright-text-color;
+  }
+  a {
+    color: $link-text-color;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .footer {
+    flex-direction: column-reverse;
+    justify-content: space-evenly;
+    padding-bottom: 1rem;
+  }
+}

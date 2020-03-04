@@ -1,0 +1,44 @@
+// Variables
+$header-font-color: #fff;
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),
+    url(../../assets/space-photo.jpeg);
+  height: 100vh;
+  background-size: cover;
+  h3 {
+    color: $header-font-color;
+    text-transform: uppercase;
+    position: absolute;
+    top: 1rem;
+    left: 4rem;
+  }
+  h1 {
+    font-size: 6rem;
+    font-weight: 400;
+    color: $header-font-color;
+  }
+  .chevron {
+    height: 2rem;
+    fill: $header-font-color;
+    position: absolute;
+    bottom: 4rem;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .header {
+    background-position: center;
+    h3 {
+      top: 1rem;
+      left: 2rem;
+    }
+    h1 {
+      font-size: 4rem;
+      line-height: 6rem;
+    }
+  }
+}

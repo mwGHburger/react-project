@@ -1,0 +1,33 @@
+// Variables
+$main-background: #eaedf1;
+
+.App {
+  font-family: "Lato", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  background: $main-background;
+
+  .main-content {
+    background: #fff;
+    min-height: 200vh;
+    margin: 3rem 4rem;
+    margin-bottom: 0;
+  }
+}
+
+body {
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media screen and (max-width: 992px) {
+  .App {
+    .main-content {
+      margin: 1rem 1rem;
+    }
+  }
+}

@@ -1,0 +1,65 @@
+// variables
+$text-color: #94a1a4;
+$text-header: #190f19;
+
+.mission-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: 12rem;
+  border-bottom: 1px solid #f3f3f5;
+
+  img {
+    align-self: flex-start;
+    max-height: 8rem;
+    width: 8rem;
+    margin-top: 0.5rem;
+    margin-right: 2.5rem;
+    object-fit: contain;
+  }
+
+  .mission-main-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+    text-align: left;
+    height: 100%;
+    h2 {
+      margin: 0;
+      color: $text-header;
+    }
+    p {
+      color: $text-color;
+    }
+    .mission-links {
+      margin-top: 1.5rem;
+      .mission-link {
+        color: $text-color;
+        text-decoration: none;
+        border: 1px $text-color solid;
+        border-radius: 2px;
+        padding: 0.5rem 1rem;
+        margin-right: 1rem;
+      }
+    }
+  }
+
+  .flight-number-container {
+    text-align: center;
+    h1 {
+      color: $text-header;
+      margin: 0;
+      font-weight: 400;
+    }
+    p {
+      color: $text-color;
+    }
+  }
+}
+
+.text-hl {
+  color: $text-color;
+  font-weight: bold;
+}
