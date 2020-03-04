@@ -44,7 +44,6 @@ export const MissionItem = props => {
   const handlePayloadID = () => {
     const payloadList = props.mission.payloads;
     const payload = payloadList[payloadList.length - 1];
-    console.log(payload);
     return payload.payload_id;
   };
 

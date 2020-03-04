@@ -73,7 +73,8 @@ class App extends Component {
       keywordField: "",
       launchPadField: "",
       minYearField: "",
-      maxYearField: ""
+      maxYearField: "",
+      filteredMissions: []
     };
   }
 
@@ -97,23 +98,32 @@ class App extends Component {
   }
 
   handleApplyBtn = e => {
-    console.log(this.state.keywordField);
-    console.log(this.state.launchPadField);
-    console.log(this.state.minYearField);
-    console.log(this.state.maxYearField);
-    // Execute filter function
+    // console.log(this.state.keywordField);
+    // console.log(this.state.launchPadField);
+    // console.log(this.state.minYearField);
+    // console.log(this.state.maxYearField);
+    // // Execute filter function
+    // destructure
+    const {
+      missions,
+      keywordField,
+      launchPadField,
+      minYearField,
+      maxYearField
+    } = this.state;
+
+    console.log(keywordField);
+    const filteredMissions = missions.filter(mission => {
+      // keyword
+      return mission.rocket.rocket_name
+        .toLowerCase()
+        .includes(keywordField.toLowerCase());
+    });
+    console.log(filteredMissions);
+    this.setState({ filteredMissions: filteredMissions });
   };
 
   render() {
-    // Filter function
-    // const { missions, keywordField } = this.state;
-    // console.log(keywordField);
-    // missions.filter(mission => {
-    //   return mission.rocket_name
-    //     .toLowerCase()
-    //     .includes(keywordField.toLowerCase());
-    // });
-
     return (
       <div className="App">
         <Header />
@@ -135,7 +145,11 @@ class App extends Component {
             handleApplyBtn={this.handleApplyBtn}
           />
           <MissionList
-            missions={this.state.missions}
+            missions={
+              this.state.filteredMissions.length === 0
+                ? this.state.missions
+                : this.state.filteredMissions
+            }
             launchPads={this.state.launchPads}
           />
         </div>

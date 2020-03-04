@@ -16,7 +16,11 @@ export const LinkList = props => {
       ].map(link => {
         if (props.mission.links[link[0]]) {
           return (
-            <a className="mission-link" href={props.mission.links[link[0]]}>
+            <a
+              className="mission-link"
+              href={props.mission.links[link[0]]}
+              key={`${props.mission.flight_number}_${link[1]}`}
+            >
               {link[1]}
             </a>
           );
