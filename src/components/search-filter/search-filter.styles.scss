@@ -2,6 +2,16 @@
 $background: #f9fafa;
 $btn-background: #26bba7;
 
+.custom-select {
+  select {
+    margin-top: 0.5rem;
+    border: 1px solid #94a1a4;
+    font-size: 1rem;
+    border-radius: 4px;
+    height: 52px;
+  }
+}
+
 .search-container {
   display: flex;
   justify-content: space-around;
@@ -18,15 +28,28 @@ $btn-background: #26bba7;
     padding: 1rem;
     font-size: 1rem;
     border-radius: 4px;
-    width: 140%;
+    min-width: 120%;
+  }
+
+  .min-year {
+    select {
+      min-width: 180%;
+    }
+  }
+
+  .max-year {
+    select {
+      min-width: 180%;
+    }
   }
 
   h2 {
     margin: 0;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 500;
   }
   .btn-apply {
+    align-self: flex-end;
     font-size: 1.5rem;
     font-weight: 500;
     color: #fff;
@@ -37,14 +60,44 @@ $btn-background: #26bba7;
   }
 }
 
-.custom-select {
-  position: relative;
-  select {
-    margin-top: 0.5rem;
-    border: 1px solid #94a1a4;
-    font-size: 1rem;
-    border-radius: 4px;
-    width: 150%;
-    height: 52px;
+@media screen and (max-width: 992px) {
+  .custom-select {
+    select {
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+  }
+
+  .search-container {
+    flex-direction: column;
+    align-items: center;
+    .search {
+      min-width: 80vw;
+      margin-bottom: 1rem;
+    }
+    .launch-pad {
+      select {
+        max-width: 80vw;
+      }
+    }
+    .min-year {
+      select {
+        min-width: 80vw;
+      }
+    }
+    .max-year {
+      select {
+        min-width: 80vw;
+      }
+    }
+    .btn-apply {
+      align-self: center;
+      margin: 2rem 0;
+    }
+
+    h2 {
+      margin-top: 0.8rem;
+    }
   }
 }

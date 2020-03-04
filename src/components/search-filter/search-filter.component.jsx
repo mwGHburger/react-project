@@ -30,7 +30,6 @@ export const SearchFilter = props => {
           <option>2005</option>
           <option>2006</option>
           <option>2007</option>
-          <option>2007</option>
           <option>2008</option>
           <option>2009</option>
           <option>2010</option>
@@ -50,7 +49,6 @@ export const SearchFilter = props => {
           <option>Any</option>
           <option>2005</option>
           <option>2006</option>
-          <option>2007</option>
           <option>2007</option>
           <option>2008</option>
           <option>2009</option>
