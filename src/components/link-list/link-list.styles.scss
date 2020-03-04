@@ -2,6 +2,8 @@ $text-color: #94a1a4;
 $border-color: #e0e3e5;
 
 .mission-links {
+  display: flex;
+  flex-wrap: wrap;
   margin-top: 1.5rem;
   .mission-link {
     color: $text-color;
@@ -9,6 +11,17 @@ $border-color: #e0e3e5;
     border: 1.5px $border-color solid;
     border-radius: 4px;
     padding: 0.5rem 1rem;
-    margin-right: 1rem;
+    margin: 0.5rem 0;
+    margin-right: 0.5rem;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .mission-links {
+    margin: 1.5rem 0;
+    .mission-link {
+      font-size: 0.9rem;
+      padding: 0.2rem 0.4rem;
+    }
   }
 }
