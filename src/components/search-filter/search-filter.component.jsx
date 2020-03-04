@@ -18,27 +18,51 @@ export const SearchFilter = props => {
         <h2>Launch Pad</h2>
         <select onChange={props.handleLaunchPadChange}>
           <option>Any</option>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
+          {props.launchPads.map(launchPad => {
+            return <option key={launchPad.id}>{launchPad.full_name}</option>;
+          })}
         </select>
       </div>
       <div className="min-year custom-select">
         <h2>Min Year</h2>
         <select onChange={props.handleMinYearChange}>
           <option>Any</option>
-          <option>201</option>
-          <option>202</option>
-          <option>203</option>
+          <option>2005</option>
+          <option>2006</option>
+          <option>2007</option>
+          <option>2007</option>
+          <option>2008</option>
+          <option>2009</option>
+          <option>2010</option>
+          <option>2011</option>
+          <option>2012</option>
+          <option>2013</option>
+          <option>2014</option>
+          <option>2015</option>
+          <option>2016</option>
+          <option>2017</option>
+          <option>2018</option>
         </select>
       </div>
       <div className="max-year custom-select">
-        <h2>Min Year</h2>
+        <h2>Max Year</h2>
         <select onChange={props.handleMaxYearChange}>
           <option>Any</option>
-          <option>1012</option>
+          <option>2005</option>
+          <option>2006</option>
+          <option>2007</option>
+          <option>2007</option>
+          <option>2008</option>
+          <option>2009</option>
+          <option>2010</option>
+          <option>2011</option>
           <option>2012</option>
-          <option>3012</option>
+          <option>2013</option>
+          <option>2014</option>
+          <option>2015</option>
+          <option>2016</option>
+          <option>2017</option>
+          <option>2018</option>
         </select>
       </div>
       <button className="btn-apply" onClick={props.handleApplyBtn}>

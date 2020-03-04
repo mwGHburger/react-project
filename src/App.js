@@ -74,7 +74,8 @@ class App extends Component {
       launchPadField: "",
       minYearField: "",
       maxYearField: "",
-      filteredMissions: []
+      filteredMissions: [],
+      appliedSearch: false
     };
   }
 
@@ -98,27 +99,54 @@ class App extends Component {
   }
 
   handleApplyBtn = e => {
-    // console.log(this.state.keywordField);
-    // console.log(this.state.launchPadField);
-    // console.log(this.state.minYearField);
-    // console.log(this.state.maxYearField);
-    // // Execute filter function
+    this.setState({ appliedSearch: true });
     // destructure
     const {
       missions,
+      launchPads,
       keywordField,
       launchPadField,
       minYearField,
       maxYearField
     } = this.state;
 
-    console.log(keywordField);
-    const filteredMissions = missions.filter(mission => {
+    let filteredMissions = missions.filter(mission => {
       // keyword
       return mission.rocket.rocket_name
         .toLowerCase()
         .includes(keywordField.toLowerCase());
     });
+    // launchpad
+
+    // find id
+    if (launchPadField.length > 0) {
+      const matchedLaunchPad = launchPads.find(launchPad => {
+        return launchPad.full_name === launchPadField;
+      });
+
+      filteredMissions = filteredMissions.filter(mission => {
+        return mission.launch_site.site_id === matchedLaunchPad.id;
+      });
+    }
+
+    // find min year
+    if (minYearField.length > 0) {
+      // console.log(minYearField);
+      filteredMissions = filteredMissions.filter(mission => {
+        const launch_year = parseInt(mission.launch_date_local.substring(0, 4));
+        return launch_year >= parseInt(minYearField);
+      });
+    }
+
+    // find max year
+    if (maxYearField.length > 0) {
+      // console.log(minYearField);
+      filteredMissions = filteredMissions.filter(mission => {
+        const launch_year = parseInt(mission.launch_date_local.substring(0, 4));
+        return launch_year <= parseInt(maxYearField);
+      });
+    }
+
     console.log(filteredMissions);
     this.setState({ filteredMissions: filteredMissions });
   };
@@ -130,23 +158,30 @@ class App extends Component {
         <a name="top"></a>
         <div className="main-content">
           <SearchFilter
+            launchPads={this.state.launchPads}
             handleKeywordChange={e =>
               this.setState({ keywordField: e.target.value })
             }
-            handleLaunchPadChange={e =>
-              this.setState({ launchPadField: e.target.value })
-            }
+            handleLaunchPadChange={e => {
+              e.target.value === "Any"
+                ? this.setState({ launchPadField: "" })
+                : this.setState({ launchPadField: e.target.value });
+            }}
             handleMinYearChange={e =>
-              this.setState({ minYearField: e.target.value })
+              e.target.value === "Any"
+                ? this.setState({ minYearField: "" })
+                : this.setState({ minYearField: e.target.value })
             }
             handleMaxYearChange={e =>
-              this.setState({ maxYearField: e.target.value })
+              e.target.value === "Any"
+                ? this.setState({ maxYearField: "" })
+                : this.setState({ maxYearField: e.target.value })
             }
             handleApplyBtn={this.handleApplyBtn}
           />
           <MissionList
             missions={
-              this.state.filteredMissions.length === 0
+              this.state.appliedSearch === false
                 ? this.state.missions
                 : this.state.filteredMissions
             }
