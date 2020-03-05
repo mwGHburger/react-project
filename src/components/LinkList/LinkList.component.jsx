@@ -1,6 +1,6 @@
 import React from "react";
 // stylesheet
-import "./link-list.styles.scss";
+import "./LinkList.styles.scss";
 
 export const LinkList = props => {
   return (

@@ -1,6 +1,6 @@
 import React from "react";
 // stylesheet
-import "./header.styles.scss";
+import "./Header.styles.scss";
 // SVG
 import { ReactComponent as Chevron } from "../../assets/down-chevron.svg";
 

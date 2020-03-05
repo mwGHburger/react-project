@@ -1,8 +1,8 @@
 import React from "react";
 //stylesheet
-import "./mission-list.styles.scss";
+import "./MissionList.styles.scss";
 // component
-import { MissionItem } from "../mission-item/mission-item.component";
+import { MissionItem } from "../MissionItem/MissionItem.component";
 
 export const MissionList = props => {
   return (

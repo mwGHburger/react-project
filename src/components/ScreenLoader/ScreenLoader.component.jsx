@@ -1,6 +1,6 @@
 import React from "react";
 // stylesheet
-import "./screen-loader.styles.scss";
+import "./ScreenLoader.styles.scss";
 
 export const ScreenLoader = () => {
   return (

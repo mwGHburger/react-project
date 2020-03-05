@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import "./App.scss";
 // Components
-import { Header } from "./components/header/header.component";
-import { SearchFilter } from "./components/search-filter/search-filter.component";
-import { ScreenLoader } from "./components/screen-loader/screen-loader.component";
-import { MissionList } from "./components/mission-list/mission-list.component";
-import { Footer } from "./components/footer/footer.component";
+import { Header } from "./components/Header/Header.component";
+import { SearchFilter } from "./components/SearchFilter/SearchFilter.component";
+import { ScreenLoader } from "./components/ScreenLoader/ScreenLoader.component";
+import { MissionList } from "./components/MissionList/MissionList.component";
+import { Footer } from "./components/Footer/Footer.component";
 
 class App extends Component {
   constructor() {
@@ -102,8 +102,6 @@ class App extends Component {
       });
     }
     // invalid year range check
-    console.log(parseInt(minYearField));
-    console.log(parseInt(maxYearField));
     if (parseInt(maxYearField) < parseInt(minYearField)) {
       this.setState({ invalidYearRange: true });
     } else {

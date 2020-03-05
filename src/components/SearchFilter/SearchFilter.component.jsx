@@ -1,6 +1,6 @@
 import React from "react";
 // stylesheet
-import "./search-filter.styles.scss";
+import "./SearchFilter.styles.scss";
 
 export const SearchFilter = props => {
   return (

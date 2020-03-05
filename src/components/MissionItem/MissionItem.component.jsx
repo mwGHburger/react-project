@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 //stylesheet
-import "./mission-item.styles.scss";
+import "./MissionItem.styles.scss";
 // import defaultImage from "../../assets/image_fallback.png";
 // Component
-import { LinkList } from "../link-list/link-list.component";
+import { LinkList } from "../LinkList/LinkList.component";
 
 export const MissionItem = props => {
   // declare state
