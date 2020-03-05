@@ -1,6 +1,7 @@
 import React from "react";
 //stylesheet
 import "./mission-item.styles.scss";
+// import defaultImage from "../../assets/image_fallback.png";
 // Component
 import { LinkList } from "../link-list/link-list.component";
 
@@ -89,15 +90,9 @@ export const MissionItem = props => {
     return " Failed Mission";
   };
 
-  const handleImageError = e => {};
-
   return (
     <div className="mission-item">
-      <img
-        src={props.mission.links.mission_patch}
-        alt=""
-        onError={handleImageError}
-      />
+      <img src={props.mission.links.mission_patch} alt="" />
       <div className="mission-main-content">
         <h2>
           {`${props.mission.rocket.rocket_name} - ${handlePayloadID()} `}

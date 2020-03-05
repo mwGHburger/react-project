@@ -30,7 +30,6 @@ class App extends Component {
     fetch("http://localhost:8001/launches")
       .then(res => res.json())
       .then(data => {
-        console.log("1");
         this.setState({
           missions: data,
           searchResults: data.length
@@ -40,7 +39,6 @@ class App extends Component {
     fetch("http://localhost:8001/launchpads")
       .then(res => res.json())
       .then(data => {
-        console.log("2");
         this.setState({
           launchPads: data,
           loading: false
