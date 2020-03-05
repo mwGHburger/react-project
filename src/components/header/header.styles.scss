@@ -26,6 +26,9 @@ $header-font-color: #fff;
     fill: $header-font-color;
     position: absolute;
     bottom: 4rem;
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
 

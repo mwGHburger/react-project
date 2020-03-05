@@ -27,7 +27,6 @@ export const SearchFilter = props => {
         <h2>Min Year</h2>
         <select onChange={props.handleMinYearChange}>
           <option>Any</option>
-          <option>2005</option>
           <option>2006</option>
           <option>2007</option>
           <option>2008</option>
@@ -40,14 +39,12 @@ export const SearchFilter = props => {
           <option>2015</option>
           <option>2016</option>
           <option>2017</option>
-          <option>2018</option>
         </select>
       </div>
       <div className="max-year custom-select">
         <h2>Max Year</h2>
         <select onChange={props.handleMaxYearChange}>
           <option>Any</option>
-          <option>2005</option>
           <option>2006</option>
           <option>2007</option>
           <option>2008</option>
@@ -60,7 +57,6 @@ export const SearchFilter = props => {
           <option>2015</option>
           <option>2016</option>
           <option>2017</option>
-          <option>2018</option>
         </select>
       </div>
       <button className="btn-apply" onClick={props.handleApplyBtn}>

@@ -31,15 +31,29 @@ $btn-background: #26bba7;
     min-width: 120%;
   }
 
+  .launch-pad {
+    select {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
   .min-year {
     select {
       min-width: 180%;
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 
   .max-year {
     select {
       min-width: 180%;
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 
@@ -57,6 +71,9 @@ $btn-background: #26bba7;
     border: none;
     border-radius: 4px;
     padding: 1rem 3rem;
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
 
