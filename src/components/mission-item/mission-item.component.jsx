@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 //stylesheet
 import "./mission-item.styles.scss";
 // import defaultImage from "../../assets/image_fallback.png";
@@ -6,6 +6,13 @@ import "./mission-item.styles.scss";
 import { LinkList } from "../link-list/link-list.component";
 
 export const MissionItem = props => {
+  // declare state
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
+  const [payload, setPayload] = useState("");
+  const [launchPadName, setLaunchPadName] = useState("");
+  const [missionSuccess, setMissionSuccess] = useState("");
+
   const handleDate = () => {
     // handle date
     const dateString = props.mission.launch_date_local.split("T")[0];
@@ -38,17 +45,23 @@ export const MissionItem = props => {
       "November",
       "December"
     ];
-
-    return `${date}${dateSuffix} ${monthNames[month]} ${year}`;
+    setDate(`${date}${dateSuffix} ${monthNames[month]} ${year}`);
   };
+
+  useEffect(() => {
+    handleDate();
+    handlePayloadID();
+    findLaunchPadName();
+    handleTime();
+    handleMissionSuccess();
+  });
 
   const handlePayloadID = () => {
     const payloadList = props.mission.payloads;
     const payload = payloadList[payloadList.length - 1];
-    return payload.payload_id;
+    setPayload(payload.payload_id);
   };
 
-  handlePayloadID();
   const findLaunchPadName = () => {
     // Array,prototype.find
     const launchPad = props.launchPads.find(launchPad => {
@@ -58,7 +71,7 @@ export const MissionItem = props => {
     if (!launchPad) {
       return;
     }
-    return launchPad.full_name;
+    setLaunchPadName(launchPad.full_name);
   };
 
   const handleTime = () => {
@@ -79,15 +92,14 @@ export const MissionItem = props => {
     } else if (timeArray[0] === 24) {
       timeArray[0] = 0;
     }
-
-    return `${timeArray[0]}:${timeArray[1]}${timeSuffix}`;
+    setTime(`${timeArray[0]}:${timeArray[1]}${timeSuffix}`);
   };
 
   const handleMissionSuccess = () => {
     if (props.mission.launch_success && props.mission.land_success) {
-      return "";
+      return setMissionSuccess("");
     }
-    return " Failed Mission";
+    return setMissionSuccess(" Failed Mission");
   };
 
   return (
@@ -95,13 +107,13 @@ export const MissionItem = props => {
       <img src={props.mission.links.mission_patch} alt="" />
       <div className="mission-main-content">
         <h2>
-          {`${props.mission.rocket.rocket_name} - ${handlePayloadID()} `}
+          {`${props.mission.rocket.rocket_name} - ${payload} `}
           {/* inline styling */}
-          {handleMissionSuccess() ? (
+          {missionSuccess ? (
             <span>
               -
               <span style={{ color: "#ec607a", fontWeight: "500" }}>
-                {handleMissionSuccess()}
+                {missionSuccess}
               </span>
             </span>
           ) : (
@@ -109,9 +121,9 @@ export const MissionItem = props => {
           )}
         </h2>
         <p>
-          Launched <span className="text-hl">{handleDate()}</span> at{" "}
-          <span className="text-hl">{handleTime()}</span> from{" "}
-          <span className="text-hl">{findLaunchPadName()}</span>
+          Launched <span className="text-hl">{date}</span> at{" "}
+          <span className="text-hl">{time}</span> from{" "}
+          <span className="text-hl">{launchPadName}</span>
         </p>
         <LinkList mission={props.mission} />
       </div>
